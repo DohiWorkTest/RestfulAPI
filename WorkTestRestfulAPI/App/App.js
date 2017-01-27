@@ -69,11 +69,6 @@ App.config(['$routeProvider',
                 controller: 'PlaceDetailsController'
             })
 
-            .when('/hejigen', {
-                templateUrl: '/App/Views/test.html',
-                controller: 'TestController'
-            })
-
             .otherwise({
                 redirectTo: '/Home'
             });
@@ -705,89 +700,4 @@ App.config(['$routeProvider',
 
     }])
 
-    .controller("hejigenController", function ($scope) {
-        $scope.message = "In hejigenController";
-    })
-
-    .controller("TestController", ['$scope', '$http', function ($scope, $http) {
-        $scope.message = "In test controller"
-        $scope.addressInfo = "";
-        $scope.locationLat = "";
-        $scope.locationLong = "";
-        $scope.places = [];
-        $scope.markers = [];
-        $scope.polyline = { path: [] };
-
-        $scope.GetAddress = function (address) {
-            if (address) {
-                $http.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + " &key=AIzaSyAywoYLVN0tfCKuSQm3DCMIzZp0NPhUDMQ").then(function (response) {
-                    $scope.addressInfo = response.data.results;
-                    $scope.locationLat = response.data.results[0].geometry.location.lat;
-                    $scope.locationLong = response.data.results[0].geometry.location.lng;
-                    console.log($scope.addressInfo);
-                    UpdateMapAndMarker();
-                })
-            }
-        }
-
-        GetPlaces = function () {
-            $http.get("/api/places").then(function (response) {
-                $scope.places = response.data;
-                console.log($scope.places);
-            }, function (response) {
-                console.log(response);
-            })
-        }
-        GetPlaces();
-
-        $scope.GetAddress('umeå, sweden');
-
-        UpdateMapAndMarker = function () {
-            $scope.polyline = { path: [] }
-            $scope.map = { center: { latitude: $scope.locationLat, longitude: $scope.locationLong }, zoom: 11 }
-            $scope.markers = [];
-            $scope.markers[0] = {
-                id: 1,
-                coords: {
-                    latitude: $scope.locationLat,
-                    longitude: $scope.locationLong
-                },
-            }
-            console.log($scope.markers)
-        }
-        $scope.map = { center: { latitude: "", longitude: "" }, zoom: 11 }
-
-
-        $scope.showPlace = function (place) {
-            $scope.polyline = { path: [] }
-            $scope.map = { center: { latitude: place.LocationLat, longitude: place.LocationLong }, zoom: 16 }
-            $scope.markers = [];
-            $scope.markers[0] = {
-                id: 1,
-                coords: {
-                    latitude: place.LocationLat,
-                    longitude: place.LocationLong
-                },
-            }
-        }
-
-        $scope.showAllPlaces = function () {
-            $scope.markers = [];
-            $scope.polyline = {};
-            angular.forEach($scope.places, function (value, key) {
-                $scope.markers.push({ id: value.Id, coords: { latitude: value.LocationLat, longitude: value.LocationLong } })
-            })
-            console.log($scope.markers)
-        }
-
-        $scope.drawPolyline = function () {
-            $scope.polyline = { path: [], visible: true, draggable: false };
-            angular.forEach($scope.markers, function (value, key) {
-                $scope.polyline.path.push({ latitude: value.coords.latitude, longitude: value.coords.longitude })
-            })
-            console.log($scope.polyline);
-        }
-
-
-    }])
 
