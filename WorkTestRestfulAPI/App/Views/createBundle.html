@@ -1,0 +1,31 @@
+﻿<h3>{{message}}</h3>
+
+<form role="form">
+    <div class="form-group">
+        <label for="name">Name of the bundle</label>
+        <input type="text" class="form-control" id="name" ng-model="Name" />
+
+        <label for="availablePaths">Available paths to add to bundle</label>
+        <table class="table table-bordered table-hover table-striped">
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Places
+                </td>
+                <td>Add to bundle</td>
+            </tr>
+            <tr ng-repeat="p in paths">
+                <td><a href="#/pathDetails/{{p.Id}}">{{p.Name}}</a></td>
+                <td><div ng-repeat="place in p.Places">{{place.Name}}</div></td>
+                <td><input type="checkbox" value="p.Id" ng-model="pathsId[p.Id]" ng-change="checkPaths(pathsId)" /></td>
+            </tr>
+
+
+        </table>
+    </div>
+    <hr />
+    <button type="submit" class="btn btn-primary" ng-click="AddBundle()">Save changes</button>
+
+</form>

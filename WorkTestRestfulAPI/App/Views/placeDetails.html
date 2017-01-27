@@ -1,0 +1,17 @@
+﻿<h2>{{message}}</h2>
+
+
+<dl class="dl-horizontal">
+    <dt>
+        Name
+    </dt>
+    <dd>
+        {{place.Name}}
+    </dd>
+</dl>
+<hr />
+<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+    <ui-gmap-marker coords="marker.coords" idkey="marker.id">
+    </ui-gmap-marker>
+</ui-gmap-google-map>
+<a href="#/DeletePlace/{{place.Id}}" class="btn btn-default">Delete place</a>

@@ -1,0 +1,16 @@
+﻿<h4>Are you sure you wish to delete this bundle?</h4>
+
+<dl class="dl-horizontal">
+    <dt>
+        Name
+    </dt>
+    <dd>
+        {{bundle.Name}}
+    </dd>
+</dl>
+
+<form ng-submit="deleteBundle(bundle)">
+    <input type="submit" class="btn btn-default" value="Yes" />
+    <a href="#/BundleDetails/{{bundle.Id}}" type="button" class="btn btn-default">No</a>
+
+</form>

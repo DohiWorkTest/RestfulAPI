@@ -1,0 +1,21 @@
+﻿<h4>Are you sure you wish to delete this path?</h4>
+
+<dl class="dl-horizontal">
+    <dt>
+        Name
+    </dt>
+    <dd>
+        {{path.Name}}
+    </dd>
+    <dt>
+        Places in path
+    </dt>
+    <dd>
+        <div ng-repeat="p in path.Places"><a href="/#/PlaceDetails/{{p.Id}}">{{p.Name}}</a></div>
+    </dd>
+</dl>
+
+<form ng-submit="deletePath(path)">
+    <input type="submit" class="btn btn-default" value="Yes" />
+    <a href="#/PathDetails/{{path.Id}}" type="button" class="btn btn-default">No</a>
+</form>

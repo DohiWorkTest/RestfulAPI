@@ -1,0 +1,56 @@
+﻿<h2>{{message}}</h2>
+
+<div id="edit" aria-labelledby="edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="edit-modal-label">Update Bundle</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="edit-id" class="col-sm-2 control-label">Id</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="edit-Id" name="Id" placeholder="Id" ng-model="bundle.Id" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-name" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="edit-Name" name="Name" placeholder="Name" ng-model="bundle.Name" required>
+                        </div>
+                    </div>
+                    <div>
+                        Edit paths in bundle
+
+                        <table class="table table-bordered table-hover table-striped">
+                            <tr>
+                                <td>
+                                    Name
+                                </td>
+
+                                <td>Include/exclude</td>
+                            </tr>
+                            <tr ng-repeat="p in paths">
+                                <td>{{p.Name}}</td>
+                                <td>
+                                    <input type="checkbox" value="{{p.Id}}" ng-model="pathsId[p.Id]" ng-change="checkPaths(pathsId)" />
+                                </td>
+                            </tr>
+
+
+                        </table>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="Close()">Close</button>
+                    <button type="submit" class="btn btn-primary" ng-click="Update()">Update</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

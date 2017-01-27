@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="App">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3MyH4BeH_E85SchJki29BKPGaPuWCHNs"></script>
+    <script src="~/Scripts/angular-simple-logger.js"></script>
+    <script src="~/Scripts/lodash.js"></script>
+    <script src="~/Scripts/angular-google-maps.js"></script>
+    <script src="~/App/App.js"></script>
+</head>
+<body ng-app="App">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Dohi test", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/BundleList">List of bundles</a></li>
+                    <li><a href="#/PathList">List of paths</a></li>
+                    <li><a href="#/PlaceList">List of places</a></li>
+                    <li><a href="#/CreateNewBundle">Create new bundle</a></li>
+                    <li><a href="#/CreateNewPath">Create new path</a></li>
+                    <li><a href="#/CreateNewPlace">Create new place</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

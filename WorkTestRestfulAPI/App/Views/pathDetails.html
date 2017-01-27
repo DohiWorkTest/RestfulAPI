@@ -1,0 +1,29 @@
+﻿<h2>{{message}}</h2>
+
+
+<dl class="dl-horizontal">
+    <dt>
+        Name
+    </dt>
+    <dd>
+        {{path.Name}}
+    </dd>
+    <dt>
+        Places in path
+    </dt>
+    <dd>
+        <div ng-repeat="p in path.Places"><a href="#/PlaceDetails/{{p.Id}}">{{p.Name}}</a></div>
+    </dd>
+</dl>
+<hr />
+
+<div>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-markers models="markers" coords="'coords'" idKey="markers.id" fit="'markers.fit'">
+        </ui-gmap-markers>
+        <ui-gmap-marker coords="marker.coords" idkey="marker.id">
+        </ui-gmap-marker>
+        <ui-gmap-polyline path="polyline.path"></ui-gmap-polyline>
+    </ui-gmap-google-map>
+</div>
+<a href="#/DeletePath/{{path.Id}}" class="btn btn-default">Delete path</a>

@@ -1,0 +1,28 @@
+﻿<h3>{{message}}</h3>
+
+<form role="form">
+    <div class="form-group">
+        <label for="name">Name of the path</label>
+        <input type="text" class="form-control" id="name" ng-model="Name" />
+
+        <label for="availablePaths">Available places to add to the path</label>
+        <table class="table table-bordered table-hover table-striped">
+            <tr>
+                <td>
+                    Name
+                </td>
+
+                <td>Add to path</td>
+            </tr>
+            <tr ng-repeat="p in places">
+                <td><a href="#/placeDetails/{{p.Id}}">{{p.Name}}</a></td>
+                <td><input type="checkbox" value="p.Id" ng-model="placesId[p.Id]" ng-change="checkPlaces(placesId)" /></td>
+            </tr>
+
+
+        </table>
+    </div>
+    <hr />
+    <button type="submit" class="btn btn-primary" ng-click="AddPath()">Save changes</button>
+
+</form>

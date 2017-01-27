@@ -1,0 +1,16 @@
+﻿<h4>Are you sure you wish to delete this place?</h4>
+
+<dl class="dl-horizontal">
+    <dt>
+        Name
+    </dt>
+    <dd>
+        {{place.Name}}
+    </dd>
+</dl>
+
+<form ng-submit="deletePlace(place)">
+    <input type="submit" class="btn btn-default" value="Yes" />
+    <a href="#/PlaceDetails/{{place.Id}}" type="button" class="btn btn-default">No</a>
+
+</form>

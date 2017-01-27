@@ -1,0 +1,20 @@
+﻿<h2>Hello and welcome to the path-thingy-site</h2>
+
+Our available paths are:
+<dl class="dl-horizontal col-lg-12" ng-repeat="path in paths">
+    <dt>
+        <a href="" ng-click="showPlacesAndPolyline(path)">{{path.Name}}</a>
+    </dt>
+    <dd ng-repeat="place in path.Places">
+        {{place.Name}}
+    </dd>
+</dl>
+<hr />
+<h4>Click one of the paths to view it on the map</h4>
+<div>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-markers models="markers" coords="'coords'" idKey="markers.id" fit="'markers.fit'">
+        </ui-gmap-markers>
+        <ui-gmap-polyline path="polyline.path"></ui-gmap-polyline>
+    </ui-gmap-google-map>
+</div>
